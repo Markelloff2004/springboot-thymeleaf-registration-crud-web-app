@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Registration System</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Bara de navigație -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Registration and Login Module</a>
+</nav>
+
+<!-- Formular de logare -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+
+            <!-- Mesaj de eroare pentru logare nereușită -->
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Datele introduse sunt incorecte. Vă rugăm să încercați din nou.</div>
+            </div>
+
+            <h1 class="text-center">Logare</h1>
+            <div class="card-body">
+                <form th:action="@{/login}" method="POST">
+
+                    <!-- Mesaj pentru confirmarea deconectării -->
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">Ati iesit din cont.</div>
+                    </div>
+
+                    <!-- Câmp pentru email (nume de utilizator) -->
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input
+                                type="text"
+                                name="username"
+                        class="form-control"
+                        required
+                        placeholder="Introduceți email-ul dvs." />
+                    </div>
+
+                    <!-- Câmp pentru parola -->
+                    <div class="form-group">
+                        <label>Parolă</label>
+                        <input
+                                type="password"
+                                name="password"
+                        class="form-control"
+                        required
+                        placeholder="Introduceți parola dvs." />
+                    </div>
+
+                    <!-- Buton de logare -->
+                    <div class="footer-body text-center">
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                Logare
+                            </button>
+                        </div>
+
+                        <!-- Link pentru înregistrare -->
+                        <div>
+                            <span>Nu ai cont?</span>
+                            <br>
+                            <a th:href="@{/registration}" class="btn btn-link">
+                                Înregistrare
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

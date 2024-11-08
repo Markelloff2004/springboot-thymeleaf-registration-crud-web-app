@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration System</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- Create navigation bar    -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Registration and Login Module</a>
+    </nav>
+    <!-- Create HTML registration form    -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <!-- Success message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">V-ți înregistrat cu succes în aplicație</div>
+                </div>
+
+                <h1 class="text-center">Înregistrare</h1>
+                <div class="card-body">
+                    <form th:action="@{/registration}" th:object="${userRegistrationDto}" method="POST">
+                        <div class="form-group">
+                            <label>Nume</label>
+                            <input
+                                    type="text"
+                                    name="firstName"
+                                    th:field="*{firstName}"
+                                    class="form-control"
+                                    required autofocus="autofocus"
+                                    placeholder="Introduceți numele dvs." />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Prenume</label>
+                            <input
+                                    type="text"
+                                    name="lastName"
+                                    th:field="*{lastName}"
+                                    class="form-control"
+                                    required autofocus="autofocus"
+                                    placeholder="Introduceți prenumele dvs." />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input
+                                    type="email"
+                                    name="email"
+                                    th:field="*{email}"
+                                    class="form-control"
+                                    required autofocus="autofocus"
+                                    placeholder="Introduceți email-ul dvs." />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Parolă</label>
+                            <input
+                                    type="password"
+                                    name="password"
+                                    th:field="*{password}"
+                                    class="form-control"
+                                    required autofocus="autofocus"
+                                    placeholder="Introduceți parola dvs." />
+                        </div>
+
+                        <div class="footer-body text-center">
+                            <!-- Buton de înregistrare -->
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">
+                                    Înregistrează-te
+                                </button>
+                            </div>
+
+                            <!-- Mesaj și link pentru logare -->
+                            <div>
+                                <span>Deja înregistrat?</span>
+                                <br>
+                                <a href="/" th:href="@{/login}" class="btn btn-link">
+                                    Logare
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--     -->
+</body>
+</html>
